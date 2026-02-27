@@ -1,11 +1,15 @@
 {
+  "format_version": "1.21.40",
   "my:stabilized_sand": {
-    "sound": "sand"
+    "sound": "sand",
+    "textures": "my_stabilized_sand"
   },
   "my:stabilized_red_sand": {
-    "sound": "sand"
+    "sound": "sand",
+    "textures": "my_stabilized_red_sand"
   },
   "my:stabilized_gravel": {
-    "sound": "gravel"
+    "sound": "gravel",
+    "textures": "my_stabilized_gravel"
   }
 }

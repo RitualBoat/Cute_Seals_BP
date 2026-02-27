@@ -21,9 +21,6 @@
       "my:variant_plant": {
         "minecraft:variant": { "value": 3 }
       },
-      "my:variant_strawberry": {
-        "minecraft:variant": { "value": 4 }
-      },
 
       "my:wild": {
         "minecraft:tameable": {
@@ -439,18 +436,7 @@
       "my:set_cold_variant": {
         "sequence": [
           { "remove": { "component_groups": ["my:detect_biome"] } },
-          {
-            "randomize": [
-              {
-                "weight": 70,
-                "add": { "component_groups": ["my:variant_arctic"] }
-              },
-              {
-                "weight": 30,
-                "add": { "component_groups": ["my:variant_strawberry"] }
-              }
-            ]
-          }
+          { "add": { "component_groups": ["my:variant_arctic"] } }
         ]
       },
 
@@ -461,11 +447,11 @@
           {
             "randomize": [
               {
-                "weight": 30,
+                "weight": 35,
                 "add": { "component_groups": ["my:variant_gray"] }
               },
               {
-                "weight": 25,
+                "weight": 30,
                 "add": { "component_groups": ["my:variant_arctic"] }
               },
               {
@@ -475,10 +461,6 @@
               {
                 "weight": 10,
                 "add": { "component_groups": ["my:variant_plant"] }
-              },
-              {
-                "weight": 10,
-                "add": { "component_groups": ["my:variant_strawberry"] }
               }
             ]
           }

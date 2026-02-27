@@ -10,8 +10,7 @@
         "default": "textures/entity/seal/seal_gray",
         "arctic": "textures/entity/seal/seal_arctic",
         "brown": "textures/entity/seal/seal_brown",
-        "plant": "textures/entity/seal/seal_plant",
-        "strawberry": "textures/entity/seal/artic_seal_strawberry"
+        "plant": "textures/entity/seal/seal_plant"
       },
       "geometry": {
         "default": "geometry.seal"

@@ -39,7 +39,7 @@
 
 | Feature               | Details                                                                                                                          |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **5 Biome Variants**  | Gray (temperate), Arctic (frozen/ice), Brown (warm/lukewarm), Plant (rare, temperate), Strawberry (rare, frozen)                 |
+| **4 Biome Variants**  | Gray (temperate), Arctic (frozen/ice), Brown (warm/lukewarm), Plant (rare, temperate)                                            |
 | **Taming**            | Use a fish bucket (cod, salmon, or tropical fish) — 33 % chance per attempt                                                      |
 | **Riding**            | Mount a tamed seal bare-back; equip a saddle for full player control (water: free-camera, ground: WASD)                          |
 | **Rider Buff**        | Conduit Power while riding a seal in water                                                                                       |
@@ -83,12 +83,12 @@
 Seals spawn naturally in ocean and beach biomes. Their texture variant is
 selected based on the biome temperature:
 
-| Biome Tag               | Variants (weighted)              |
-| ----------------------- | -------------------------------- |
-| Warm / Lukewarm         | Brown                            |
-| Frozen / Ice            | Arctic (70 %), Strawberry (30 %) |
-| Temperate Ocean / Beach | Gray (85 %), Plant (15 %)        |
-| Other                   | Random (all 5 variants)          |
+| Biome Tag               | Variants (weighted)       |
+| ----------------------- | ------------------------- |
+| Warm / Lukewarm         | Brown                     |
+| Frozen / Ice            | Arctic                    |
+| Temperate Ocean / Beach | Gray (85 %), Plant (15 %) |
+| Other                   | Random (all 4 variants)   |
 
 ### Taming
 
@@ -177,7 +177,7 @@ resource_pack/
     ├── item_texture.json
     ├── terrain_texture.json
     ├── blocks/                   # Stabilized block textures
-    ├── entity/seal/              # 5 variant skins (512×512)
+    ├── entity/seal/              # 4 variant skins (512×512)
     └── items/                    # Item icons
 ```
 

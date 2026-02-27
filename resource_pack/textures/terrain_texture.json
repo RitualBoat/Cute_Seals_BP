@@ -1,0 +1,17 @@
+{
+  "resource_pack_name": "Cute_Seals_RP",
+  "texture_name": "atlas.terrain",
+  "num_mip_levels": 4,
+  "padding": 8,
+  "texture_data": {
+    "my_stabilized_sand": {
+      "textures": "textures/blocks/stabilized_sand"
+    },
+    "my_stabilized_red_sand": {
+      "textures": "textures/blocks/stabilized_red_sand"
+    },
+    "my_stabilized_gravel": {
+      "textures": "textures/blocks/stabilized_gravel"
+    }
+  }
+}

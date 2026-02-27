@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "my:stabilized_red_sand",
+      "menu_category": {
+        "category": "construction",
+        "group": "itemGroup.name.sand"
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.5
+      },
+      "minecraft:map_color": "#A85420",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "my_stabilized_red_sand",
+          "render_method": "opaque"
+        }
+      }
+    }
+  }
+}

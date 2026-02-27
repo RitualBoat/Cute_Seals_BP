@@ -1,0 +1,54 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.seal.main": {
+      "initial_state": "on_ground",
+      "states": {
+        "on_ground": {
+          "animations": [
+            { "idle": "!query.is_moving" },
+            { "walk": "query.is_moving" },
+            "look_at_target"
+          ],
+          "transitions": [
+            { "tickled": "query.is_charged" },
+            { "clapping": "query.is_tempted" },
+            { "in_water": "query.is_in_water" }
+          ]
+        },
+        "in_water": {
+          "animations": [
+            { "swim": "query.is_moving" },
+            { "idle": "!query.is_moving" },
+            "look_at_target"
+          ],
+          "transitions": [
+            { "tickled": "query.is_charged" },
+            { "clapping": "query.is_tempted" },
+            { "on_ground": "!query.is_in_water" }
+          ]
+        },
+        "clapping": {
+          "animations": [
+            "clap",
+            { "walk": "query.is_moving" },
+            "look_at_target"
+          ],
+          "transitions": [
+            { "tickled": "query.is_charged" },
+            { "on_ground": "!query.is_tempted && !query.is_in_water" },
+            { "in_water": "!query.is_tempted && query.is_in_water" }
+          ]
+        },
+        "tickled": {
+          "animations": ["tickle"],
+          "blend_transition": 0.1,
+          "transitions": [
+            { "on_ground": "!query.is_charged && !query.is_in_water" },
+            { "in_water": "!query.is_charged && query.is_in_water" }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "my:rendered_blubber_recipe"
+    },
+    "tags": ["furnace", "smoker", "blast_furnace"],
+    "input": "my:seal_blubber",
+    "output": "my:rendered_blubber"
+  }
+}

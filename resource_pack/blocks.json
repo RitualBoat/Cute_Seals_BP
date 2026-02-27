@@ -1,0 +1,11 @@
+{
+  "my:stabilized_sand": {
+    "sound": "sand"
+  },
+  "my:stabilized_red_sand": {
+    "sound": "sand"
+  },
+  "my:stabilized_gravel": {
+    "sound": "gravel"
+  }
+}

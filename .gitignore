@@ -1,0 +1,23 @@
+# ── Reference / context packs (not part of the add-on) ──
+context/
+
+# ── Build artefacts ──
+*.mcaddon
+*.mcpack
+
+# ── Blockbench project files ──
+*.bbmodel
+
+# ── OS junk ──
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# ── IDE / editor settings ──
+.vscode/
+.idea/
+*.code-workspace
+
+# ── Logs ──
+*.log

@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Cute Seals RP",
+    "description": "Adds adorable seals to Minecraft Bedrock! By Ritual Boat. Special thanks to my beloved girlfriend Valen Russel.",
+    "uuid": "3414aad0-08b7-4803-b4b3-0a36983c1e5f",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "36093a76-11ff-4be4-bda9-8fd79514c4fd",
+      "version": [1, 0, 0]
+    }
+  ]
+}

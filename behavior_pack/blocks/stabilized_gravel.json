@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "my:stabilized_gravel",
+      "menu_category": {
+        "category": "construction",
+        "group": "itemGroup.name.sand"
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.6
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.6
+      },
+      "minecraft:map_color": "#7E7E7E",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "my_stabilized_gravel",
+          "render_method": "opaque"
+        }
+      }
+    }
+  }
+}

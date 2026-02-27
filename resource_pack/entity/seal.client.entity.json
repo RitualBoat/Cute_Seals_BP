@@ -1,0 +1,43 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "my:seal",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/seal/seal_gray",
+        "arctic": "textures/entity/seal/seal_arctic",
+        "brown": "textures/entity/seal/seal_brown",
+        "plant": "textures/entity/seal/seal_plant",
+        "strawberry": "textures/entity/seal/artic_seal_strawberry"
+      },
+      "geometry": {
+        "default": "geometry.seal"
+      },
+      "animations": {
+        "idle": "animation.seal.idle",
+        "walk": "animation.seal.walk",
+        "swim": "animation.seal.swim",
+        "clap": "animation.seal.clap",
+        "tickle": "animation.seal.tickle",
+        "roll": "animation.seal.roll",
+        "look_at_target": "animation.seal.look_at_target",
+        "ctrl": "controller.animation.seal.main"
+      },
+      "sound_effects": {
+        "clap": "mob.seal.clap",
+        "tickle": "mob.seal.tickle"
+      },
+      "scripts": {
+        "animate": ["ctrl"]
+      },
+      "render_controllers": ["controller.render.seal"],
+      "spawn_egg": {
+        "base_color": "#8b949c",
+        "overlay_color": "#e3e8ea"
+      }
+    }
+  }
+}

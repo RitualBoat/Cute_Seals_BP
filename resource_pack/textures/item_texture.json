@@ -1,0 +1,12 @@
+{
+  "resource_pack_name": "Cute_Seals_RP",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "seal_blubber": {
+      "textures": "textures/items/seal_blubber"
+    },
+    "rendered_blubber": {
+      "textures": "textures/items/rendered_blubber"
+    }
+  }
+}

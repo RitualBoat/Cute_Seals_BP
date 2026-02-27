@@ -1,0 +1,25 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "my:seal": {
+        "volume": 1.0,
+        "pitch": [0.8, 1.2],
+        "events": {
+          "ambient": "mob.seal.ambient",
+          "hurt": "mob.seal.hurt",
+          "death": "mob.seal.death",
+          "step": {
+            "sound": "mob.seal.step",
+            "volume": 0.3,
+            "pitch": 1.0
+          },
+          "clap": {
+            "sound": "mob.seal.clap",
+            "volume": 0.9,
+            "pitch": 1.0
+          }
+        }
+      }
+    }
+  }
+}

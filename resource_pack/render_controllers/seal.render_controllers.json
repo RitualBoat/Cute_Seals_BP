@@ -1,0 +1,25 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.seal": {
+      "arrays": {
+        "textures": {
+          "Array.skin_variants": [
+            "Texture.default",
+            "Texture.arctic",
+            "Texture.brown",
+            "Texture.plant",
+            "Texture.strawberry"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Array.skin_variants[query.variant]"]
+    }
+  }
+}

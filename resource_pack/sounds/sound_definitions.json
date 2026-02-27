@@ -1,0 +1,85 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "mob.seal.ambient": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/entity/seal/ambient1",
+          "volume": 0.8,
+          "pitch": 1.0
+        },
+        {
+          "name": "sounds/entity/seal/ambient2",
+          "volume": 0.8,
+          "pitch": 1.0
+        },
+        {
+          "name": "sounds/entity/seal/ambient3",
+          "volume": 0.8,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "mob.seal.hurt": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/entity/seal/hurt1",
+          "volume": 1.0,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "mob.seal.death": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/entity/seal/death1",
+          "volume": 1.0,
+          "pitch": 0.9
+        }
+      ]
+    },
+    "mob.seal.step": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/entity/seal/step1",
+          "volume": 0.35,
+          "pitch": 1.0
+        }
+      ]
+    },
+    "mob.seal.tickle": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/entity/seal/tickle1",
+          "volume": 1.0,
+          "pitch": 1.2
+        },
+        {
+          "name": "sounds/entity/seal/tickle2",
+          "volume": 1.0,
+          "pitch": 1.2
+        },
+        {
+          "name": "sounds/entity/seal/tickle3",
+          "volume": 1.0,
+          "pitch": 1.2
+        }
+      ]
+    },
+    "mob.seal.clap": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/entity/seal/clap1",
+          "volume": 0.9,
+          "pitch": 1.0
+        }
+      ]
+    }
+  }
+}

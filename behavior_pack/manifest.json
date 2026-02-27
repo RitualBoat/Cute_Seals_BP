@@ -1,0 +1,39 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Cute Seals BP",
+    "description": "Adds adorable seals to Minecraft Bedrock! By Ritual Boat. Special thanks to my beloved girlfriend Valen Russel.",
+    "uuid": "aa82ef54-7bab-49a1-95f8-171e3e43ab68",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "977d7fd0-5338-44d3-b8c6-c8a9b478fdf8",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "6b39ceba-d411-4a29-b582-6168889ff1e1",
+      "entry": "scripts/main.js",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "3414aad0-08b7-4803-b4b3-0a36983c1e5f",
+      "version": [1, 0, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.14.0"
+    }
+  ],
+  "metadata": {
+    "generated_with": {
+      "blockbench_entity_wizard": ["1.8.2"]
+    }
+  }
+}

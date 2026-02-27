@@ -1,0 +1,15 @@
+## Entity Names
+entity.my:seal.name=Cute Seal
+item.spawn_egg.entity.my:seal.name=Seal Spawn Egg
+
+## Item Names
+item.my:seal_blubber.name=Seal Blubber
+item.my:rendered_blubber.name=Rendered Blubber
+
+## Block Names
+tile.my:stabilized_sand.name=Stabilized Sand
+tile.my:stabilized_red_sand.name=Stabilized Red Sand
+tile.my:stabilized_gravel.name=Stabilized Gravel
+
+## Interact Text
+action.interact.ride=Ride

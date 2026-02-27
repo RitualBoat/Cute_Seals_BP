@@ -19,6 +19,16 @@
         }
       ],
       "textures": ["Array.skin_variants[query.variant]"]
+    },
+    "controller.render.seal.saddle": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": ["Texture.saddle"],
+      "part_visibility": [{ "*": false }, { "body": "query.is_saddled" }]
     }
   }
 }

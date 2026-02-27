@@ -138,7 +138,7 @@
     },
 
     "animation.seal.clap": {
-      "loop": false,
+      "loop": true,
       "animation_length": 1.5,
       "bones": {
         "head": {

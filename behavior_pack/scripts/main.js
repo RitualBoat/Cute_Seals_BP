@@ -9,10 +9,10 @@ import {
 // ============================================================
 // TICKLE COOLDOWN TRACKING
 // Per-entity cooldown map: entityId → next-available tick
-// Cooldown: 5 minutes = 6000 ticks
+// Cooldown: 1 minute = 1200 ticks
 // ============================================================
 
-const TICKLE_COOLDOWN_TICKS = 6000;
+const TICKLE_COOLDOWN_TICKS = 1200;
 const tickleCooldowns = new Map();
 
 // ============================================================
@@ -83,14 +83,14 @@ world.beforeEvents.playerInteractWithEntity.subscribe((event) => {
         z: entity.location.z,
       });
 
-      // End tickle state after 1.5 seconds
+      // End tickle state after 3 seconds
       system.runTimeout(() => {
         try {
           entity.triggerEvent("my:end_tickle");
         } catch (e) {
           // Entity may have despawned
         }
-      }, 30);
+      }, 60);
     } catch (e) {
       console.warn(`[CuteSeals] Tickle error: ${e}`);
     }

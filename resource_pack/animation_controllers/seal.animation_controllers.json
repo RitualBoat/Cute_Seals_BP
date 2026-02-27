@@ -1,52 +1,74 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.seal.main": {
+    "controller.animation.seal.move": {
       "initial_state": "on_ground",
       "states": {
         "on_ground": {
           "animations": [
             { "idle": "!query.is_moving" },
-            { "walk": "query.is_moving" },
-            "look_at_target"
+            { "walk": "query.is_moving" }
           ],
-          "transitions": [
-            { "tickled": "query.is_charged" },
-            { "clapping": "query.is_tempted" },
-            { "in_water": "query.is_in_water" }
-          ]
+          "blend_transition": 0.2,
+          "transitions": [{ "in_water": "query.is_in_water" }]
         },
         "in_water": {
           "animations": [
             { "swim": "query.is_moving" },
-            { "idle": "!query.is_moving" },
-            "look_at_target"
+            { "idle": "!query.is_moving" }
           ],
-          "transitions": [
-            { "tickled": "query.is_charged" },
-            { "clapping": "query.is_tempted" },
-            { "on_ground": "!query.is_in_water" }
-          ]
+          "blend_transition": 0.2,
+          "transitions": [{ "on_ground": "!query.is_in_water" }]
+        }
+      }
+    },
+    "controller.animation.seal.look": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["look_at_target"]
+        }
+      }
+    },
+    "controller.animation.seal.clap": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [{ "clapping": "query.is_tempted" }],
+          "blend_transition": 0.2
         },
         "clapping": {
-          "animations": [
-            "clap",
-            { "walk": "query.is_moving" },
-            "look_at_target"
-          ],
-          "transitions": [
-            { "tickled": "query.is_charged" },
-            { "on_ground": "!query.is_tempted && !query.is_in_water" },
-            { "in_water": "!query.is_tempted && query.is_in_water" }
-          ]
+          "animations": ["clap"],
+          "transitions": [{ "default": "!query.is_tempted" }],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.seal.tickle": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [{ "tickled": "query.is_charged" }],
+          "blend_transition": 0.15
         },
         "tickled": {
           "animations": ["tickle"],
-          "blend_transition": 0.1,
-          "transitions": [
-            { "on_ground": "!query.is_charged && !query.is_in_water" },
-            { "in_water": "!query.is_charged && query.is_in_water" }
-          ]
+          "transitions": [{ "default": "!query.is_charged" }],
+          "blend_transition": 0.15
+        }
+      }
+    },
+    "controller.animation.seal.roll": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [{ "rolling": "query.timer_flag_1" }],
+          "blend_transition": 0.2
+        },
+        "rolling": {
+          "animations": ["roll"],
+          "transitions": [{ "default": "!query.timer_flag_1" }],
+          "blend_transition": 0.2
         }
       }
     }

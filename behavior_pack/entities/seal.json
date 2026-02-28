@@ -5,7 +5,29 @@
       "identifier": "my:seal",
       "is_spawnable": true,
       "is_summonable": true,
-      "is_experimental": false
+      "is_experimental": false,
+      "properties": {
+        "my:is_tickled": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "my:is_anchored": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "my:is_clapping": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "my:is_rolling": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
     },
 
     "component_groups": {
@@ -23,20 +45,8 @@
       },
 
       "my:wild": {
-        "minecraft:tameable": {
-          "probability": 0.33,
-          "tame_items": [
-            "minecraft:cod_bucket",
-            "minecraft:salmon_bucket",
-            "minecraft:tropical_fish_bucket"
-          ],
-          "tame_event": {
-            "event": "my:on_tame",
-            "target": "self"
-          }
-        },
         "minecraft:behavior.nearest_attackable_target": {
-          "priority": 3,
+          "priority": 4,
           "must_see": true,
           "reselect_targets": true,
           "within_radius": 20.0,
@@ -74,6 +84,21 @@
               "max_dist": 16
             }
           ]
+        },
+        "minecraft:behavior.move_to_water": {
+          "priority": 5,
+          "search_range": 16,
+          "search_height": 5,
+          "search_count": 1,
+          "goal_radius": 0.1
+        },
+        "minecraft:attack": {
+          "damage": 2
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 5,
+          "speed_multiplier": 2.0,
+          "track_target": true
         }
       },
 
@@ -86,19 +111,16 @@
             { "item": "minecraft:tropical_fish_bucket", "heal_amount": 6 }
           ]
         },
-        "minecraft:behavior.follow_owner": {
+        "minecraft:behavior.panic": {
           "priority": 1,
-          "speed_multiplier": 1.5,
-          "start_distance": 5.0,
-          "stop_distance": 2.0
-        },
-        "minecraft:behavior.sit": {
-          "priority": 0
-        },
-        "minecraft:sittable": {},
+          "speed_multiplier": 1.5
+        }
+      },
+
+      "my:tamed_inventory": {
         "minecraft:inventory": {
           "container_type": "horse",
-          "inventory_size": 2
+          "inventory_size": 16
         },
         "minecraft:equippable": {
           "slots": [
@@ -116,7 +138,127 @@
               }
             }
           ]
+        }
+      },
+
+      "my:unchested": {
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "play_sounds": "armor.equip_generic",
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_sneaking",
+                      "subject": "other",
+                      "value": false
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "subject": "other",
+                      "value": "chest"
+                    }
+                  ]
+                },
+                "event": "my:on_chest",
+                "target": "self"
+              },
+              "use_item": true,
+              "interact_text": "action.interact.attachchest"
+            }
+          ]
+        }
+      },
+
+      "my:chested": {
+        "minecraft:is_chested": {},
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 4,
+          "must_see": true,
+          "reselect_targets": true,
+          "within_radius": 20.0,
+          "must_see_forget_duration": 17.0,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "none_of": [
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "player"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "seal"
+                      }
+                    ]
+                  },
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "cod"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "salmon"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "tropicalfish"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "pufferfish"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 16
+            }
+          ]
         },
+        "minecraft:attack": {
+          "damage": 2
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 5,
+          "speed_multiplier": 2.0,
+          "track_target": true
+        }
+      },
+
+      "my:rideable": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "crouching_skip_interact": true,
+          "family_types": ["player"],
+          "interact_text": "action.interact.ride",
+          "seats": [
+            {
+              "position": [0.0, 0.6, -0.2]
+            }
+          ]
+        }
+      },
+
+      "my:saddled": {
+        "minecraft:is_saddled": {},
         "minecraft:rideable": {
           "seat_count": 1,
           "crouching_skip_interact": true,
@@ -128,11 +270,7 @@
             }
           ],
           "controlling_seat": 0
-        }
-      },
-
-      "my:saddled": {
-        "minecraft:is_saddled": {},
+        },
         "minecraft:behavior.player_ride_tamed": {
           "priority": 0
         }
@@ -142,6 +280,13 @@
         "minecraft:free_camera_controlled": {
           "strafe_speed_modifier": 0.7,
           "backwards_movement_modifier": 0.5
+        },
+        "minecraft:dash_action": {
+          "cooldown_time": 3,
+          "horizontal_momentum": 15.0,
+          "vertical_momentum": 0.05,
+          "can_dash_underwater": true,
+          "direction": "passenger"
         },
         "minecraft:environment_sensor": {
           "triggers": [
@@ -158,6 +303,13 @@
 
       "my:saddled_on_ground": {
         "minecraft:input_ground_controlled": {},
+        "minecraft:dash_action": {
+          "cooldown_time": 3,
+          "horizontal_momentum": 10.0,
+          "vertical_momentum": 0.05,
+          "can_dash_underwater": false,
+          "direction": "passenger"
+        },
         "minecraft:environment_sensor": {
           "triggers": [
             {
@@ -170,19 +322,55 @@
         }
       },
 
-      "my:tickle_reacting": {
-        "minecraft:is_charged": {}
+      "my:adult": {
+        "minecraft:breedable": {
+          "require_tame": true,
+          "require_full_health": true,
+          "breed_items": [
+            "minecraft:cod_bucket",
+            "minecraft:salmon_bucket",
+            "minecraft:tropical_fish_bucket"
+          ],
+          "breeds_with": [
+            {
+              "mate_type": "my:seal",
+              "baby_type": "my:seal",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            }
+          ]
+        },
+        "minecraft:behavior.breed": {
+          "priority": 2,
+          "speed_multiplier": 1.0
+        }
       },
 
-      "my:rolling": {
-        "minecraft:behavior.timer_flag_1": {
-          "priority": 6,
-          "cooldown_range": [600, 1200],
-          "duration_range": [2.0, 2.0],
-          "on_end": {
-            "event": "my:end_roll",
+      "my:baby": {
+        "minecraft:is_baby": {},
+        "minecraft:ageable": {
+          "duration": 300,
+          "feed_items": [
+            { "item": "minecraft:cod_bucket", "growth": 0.1 },
+            { "item": "minecraft:salmon_bucket", "growth": 0.1 },
+            { "item": "minecraft:tropical_fish_bucket", "growth": 0.1 }
+          ],
+          "grow_up": {
+            "event": "my:grow_up",
             "target": "self"
           }
+        },
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+
+      "my:tamed_anchored": {
+        "minecraft:home": {
+          "restriction_radius": 16,
+          "restriction_type": "random_movement"
         }
       },
 
@@ -294,13 +482,15 @@
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
       "minecraft:nameable": {},
-      "minecraft:attack": {
-        "damage": 2
+      "minecraft:home": {},
+      "minecraft:leashable": {
+        "soft_distance": 4.0,
+        "hard_distance": 6.0,
+        "max_distance": 10.0
       },
       "minecraft:experience_reward": {
         "on_death": "query.last_hit_by_player ? math.random(1,3) : 0"
       },
-
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
@@ -315,7 +505,7 @@
       },
 
       "minecraft:behavior.tempt": {
-        "priority": 2,
+        "priority": 3,
         "speed_multiplier": 1.2,
         "can_tempt_vertically": true,
         "items": [
@@ -324,63 +514,72 @@
           "minecraft:tropical_fish_bucket"
         ]
       },
-      "minecraft:behavior.melee_attack": {
-        "priority": 4,
-        "speed_multiplier": 2.0,
-        "track_target": true
-      },
-      "minecraft:behavior.move_to_water": {
-        "priority": 5,
-        "search_range": 16,
-        "search_height": 5,
-        "search_count": 1,
-        "goal_radius": 0.1
-      },
       "minecraft:behavior.swim_idle": {
-        "priority": 6,
+        "priority": 7,
         "idle_time": 5.0,
         "success_rate": 0.05
       },
       "minecraft:behavior.random_swim": {
-        "priority": 7,
+        "priority": 8,
         "speed_multiplier": 1.0,
         "interval": 0,
         "xz_dist": 30,
         "y_dist": 15
       },
       "minecraft:behavior.random_stroll": {
-        "priority": 8,
+        "priority": 9,
         "speed_multiplier": 1.2,
         "interval": 40
       },
       "minecraft:behavior.look_at_player": {
-        "priority": 9,
+        "priority": 10,
         "look_distance": 8.0
       },
       "minecraft:behavior.random_look_around": {
-        "priority": 10
+        "priority": 11
       }
     },
 
     "events": {
       "minecraft:entity_spawned": {
         "add": {
-          "component_groups": ["my:wild", "my:detect_biome"]
+          "component_groups": ["my:wild", "my:detect_biome", "my:rideable"]
         }
+      },
+
+      "minecraft:entity_born": {
+        "add": {
+          "component_groups": ["my:baby", "my:tamed", "my:detect_biome"]
+        },
+        "set_home_position": {}
       },
 
       "my:on_tame": {
         "sequence": [
           { "remove": { "component_groups": ["my:wild"] } },
-          { "add": { "component_groups": ["my:tamed", "my:rolling"] } }
+          {
+            "add": {
+              "component_groups": [
+                "my:tamed",
+                "my:tamed_inventory",
+                "my:unchested",
+                "my:adult"
+              ]
+            }
+          },
+          { "set_home_position": {} }
         ]
+      },
+
+      "my:on_chest": {
+        "remove": { "component_groups": ["my:unchested"] },
+        "add": { "component_groups": ["my:chested"] }
       },
 
       "my:equip_saddle": {
         "sequence": [
-          {
-            "add": { "component_groups": ["my:saddled"] }
-          },
+          { "remove": { "component_groups": ["my:rideable"] } },
+          { "add": { "component_groups": ["my:saddled"] } },
           {
             "filters": { "test": "in_water" },
             "add": { "component_groups": ["my:saddled_in_water"] }
@@ -393,13 +592,18 @@
       },
 
       "my:unequip_saddle": {
-        "remove": {
-          "component_groups": [
-            "my:saddled",
-            "my:saddled_in_water",
-            "my:saddled_on_ground"
-          ]
-        }
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "my:saddled",
+                "my:saddled_in_water",
+                "my:saddled_on_ground"
+              ]
+            }
+          },
+          { "add": { "component_groups": ["my:rideable"] } }
+        ]
       },
 
       "my:saddled_enter_water": {
@@ -413,17 +617,57 @@
       },
 
       "my:start_tickle": {
-        "add": { "component_groups": ["my:tickle_reacting"] }
+        "set_property": { "my:is_tickled": true }
       },
 
       "my:end_tickle": {
-        "remove": { "component_groups": ["my:tickle_reacting"] }
+        "set_property": { "my:is_tickled": false }
+      },
+
+      "my:start_roll": {
+        "set_property": { "my:is_rolling": true }
       },
 
       "my:end_roll": {
+        "set_property": { "my:is_rolling": false }
+      },
+
+      "my:start_clap": {
+        "set_property": { "my:is_clapping": true }
+      },
+
+      "my:end_clap": {
+        "set_property": { "my:is_clapping": false }
+      },
+
+      "my:anchor_seal": {
         "sequence": [
-          { "remove": { "component_groups": ["my:rolling"] } },
-          { "add": { "component_groups": ["my:rolling"] } }
+          { "set_property": { "my:is_anchored": true } },
+          { "add": { "component_groups": ["my:tamed_anchored"] } },
+          { "set_home_position": {} }
+        ]
+      },
+
+      "my:free_seal": {
+        "sequence": [
+          { "set_property": { "my:is_anchored": false } },
+          { "remove": { "component_groups": ["my:tamed_anchored"] } }
+        ]
+      },
+
+      "my:grow_up": {
+        "sequence": [
+          { "remove": { "component_groups": ["my:baby"] } },
+          {
+            "add": {
+              "component_groups": [
+                "my:adult",
+                "my:rideable",
+                "my:tamed_inventory",
+                "my:unchested"
+              ]
+            }
+          }
         ]
       },
 

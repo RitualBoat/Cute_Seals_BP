@@ -9,7 +9,8 @@
             "Texture.arctic",
             "Texture.brown",
             "Texture.plant"
-          ]
+          ],
+          "Array.saddle_overlay": ["Texture.transparent", "Texture.saddle"]
         }
       },
       "geometry": "Geometry.default",
@@ -18,17 +19,10 @@
           "*": "Material.default"
         }
       ],
-      "textures": ["Array.skin_variants[query.variant]"]
-    },
-    "controller.render.seal.saddle": {
-      "geometry": "Geometry.default",
-      "materials": [
-        {
-          "*": "Material.default"
-        }
-      ],
-      "textures": ["Texture.saddle"],
-      "part_visibility": [{ "*": false }, { "body": "query.is_saddled" }]
+      "textures": [
+        "Array.skin_variants[query.variant]",
+        "Array.saddle_overlay[query.is_saddled]"
+      ]
     }
   }
 }

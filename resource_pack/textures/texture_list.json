@@ -1,5 +1,6 @@
 [
   "textures/blocks/stabilized_sand",
   "textures/blocks/stabilized_red_sand",
-  "textures/blocks/stabilized_gravel"
+  "textures/blocks/stabilized_gravel",
+  "textures/entity/seal/seal_transparent"
 ]

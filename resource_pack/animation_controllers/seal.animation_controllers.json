@@ -10,7 +10,12 @@
             { "walk": "query.is_moving" }
           ],
           "blend_transition": 0.2,
-          "transitions": [{ "in_water": "query.is_in_water" }]
+          "transitions": [
+            {
+              "frozen": "query.property('my:is_rolling') || query.property('my:is_clapping') || query.property('my:is_tickled')"
+            },
+            { "in_water": "query.is_in_water" }
+          ]
         },
         "in_water": {
           "animations": [
@@ -18,7 +23,23 @@
             { "idle": "!query.is_moving" }
           ],
           "blend_transition": 0.2,
-          "transitions": [{ "on_ground": "!query.is_in_water" }]
+          "transitions": [
+            {
+              "frozen": "query.property('my:is_rolling') || query.property('my:is_clapping') || query.property('my:is_tickled')"
+            },
+            { "on_ground": "!query.is_in_water" }
+          ]
+        },
+        "frozen": {
+          "blend_transition": 0.2,
+          "transitions": [
+            {
+              "on_ground": "!query.property('my:is_rolling') && !query.property('my:is_clapping') && !query.property('my:is_tickled') && !query.is_in_water"
+            },
+            {
+              "in_water": "!query.property('my:is_rolling') && !query.property('my:is_clapping') && !query.property('my:is_tickled') && query.is_in_water"
+            }
+          ]
         }
       }
     },
@@ -34,12 +55,12 @@
       "initial_state": "default",
       "states": {
         "default": {
-          "transitions": [{ "clapping": "query.is_tempted" }],
+          "transitions": [{ "clapping": "query.property('my:is_clapping')" }],
           "blend_transition": 0.2
         },
         "clapping": {
           "animations": ["clap"],
-          "transitions": [{ "default": "!query.is_tempted" }],
+          "transitions": [{ "default": "!query.property('my:is_clapping')" }],
           "blend_transition": 0.2
         }
       }
@@ -48,12 +69,12 @@
       "initial_state": "default",
       "states": {
         "default": {
-          "transitions": [{ "tickled": "query.is_charged" }],
+          "transitions": [{ "tickled": "query.property('my:is_tickled')" }],
           "blend_transition": 0.15
         },
         "tickled": {
           "animations": ["tickle"],
-          "transitions": [{ "default": "!query.is_charged" }],
+          "transitions": [{ "default": "!query.property('my:is_tickled')" }],
           "blend_transition": 0.15
         }
       }
@@ -62,12 +83,26 @@
       "initial_state": "default",
       "states": {
         "default": {
-          "transitions": [{ "rolling": "query.timer_flag_1" }],
+          "transitions": [{ "rolling": "query.property('my:is_rolling')" }],
           "blend_transition": 0.2
         },
         "rolling": {
           "animations": ["roll"],
-          "transitions": [{ "default": "!query.timer_flag_1" }],
+          "transitions": [{ "default": "!query.property('my:is_rolling')" }],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.seal.baby": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [{ "baby": "query.is_baby" }],
+          "blend_transition": 0.2
+        },
+        "baby": {
+          "animations": ["baby_transform"],
+          "transitions": [{ "default": "!query.is_baby" }],
           "blend_transition": 0.2
         }
       }

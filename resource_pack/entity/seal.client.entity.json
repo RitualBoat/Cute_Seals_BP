@@ -11,7 +11,8 @@
         "arctic": "textures/entity/seal/seal_arctic",
         "brown": "textures/entity/seal/seal_brown",
         "plant": "textures/entity/seal/seal_plant",
-        "saddle": "textures/entity/seal/seal_saddle"
+        "saddle": "textures/entity/seal/seal_saddle",
+        "transparent": "textures/entity/seal/seal_transparent"
       },
       "geometry": {
         "default": "geometry.seal"
@@ -22,13 +23,16 @@
         "swim": "animation.seal.swim",
         "clap": "animation.seal.clap",
         "tickle": "animation.seal.tickle",
+        "tickle_roll": "animation.seal.tickle_roll",
         "roll": "animation.seal.roll",
         "look_at_target": "animation.seal.look_at_target",
+        "baby_transform": "animation.seal.baby_transform",
         "ctrl_move": "controller.animation.seal.move",
         "ctrl_look": "controller.animation.seal.look",
         "ctrl_clap": "controller.animation.seal.clap",
         "ctrl_tickle": "controller.animation.seal.tickle",
-        "ctrl_roll": "controller.animation.seal.roll"
+        "ctrl_roll": "controller.animation.seal.roll",
+        "ctrl_baby": "controller.animation.seal.baby"
       },
       "sound_effects": {
         "clap": "mob.seal.clap",
@@ -40,13 +44,11 @@
           "ctrl_look",
           "ctrl_clap",
           "ctrl_tickle",
-          "ctrl_roll"
+          "ctrl_roll",
+          "ctrl_baby"
         ]
       },
-      "render_controllers": [
-        "controller.render.seal",
-        "controller.render.seal.saddle"
-      ],
+      "render_controllers": ["controller.render.seal"],
       "spawn_egg": {
         "base_color": "#8b949c",
         "overlay_color": "#e3e8ea"

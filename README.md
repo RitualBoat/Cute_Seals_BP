@@ -1,7 +1,7 @@
 # 🦭 Cute Seals — Minecraft Bedrock Add-On
 
 **Author:** Ritual Boat  
-**Dedicated to my beloved girlfriend, Valen Russel.**
+**Dedicated to my beloved girlfriend, Valen Russell.**
 
 > Adds adorable, tameable seals to Minecraft Bedrock Edition with unique
 > interactions, custom items, and gravity-defying blocks — all powered by
@@ -42,7 +42,7 @@
 | **4 Biome Variants**  | Gray (temperate), Arctic (frozen/ice), Brown (warm/lukewarm), Plant (rare, temperate)                                            |
 | **Taming**            | Use a fish bucket (cod, salmon, or tropical fish) — 33 % chance per attempt                                                      |
 | **Riding**            | Mount a tamed seal bare-back; equip a saddle for full player control (water: free-camera, ground: WASD)                          |
-| **Rider Buff**        | Conduit Power while riding a seal in water                                                                                       |
+| **Rider Buff**        | Brief Water Breathing while riding a seal in water (similar to Respiration — fades quickly on dismount)                          |
 | **Tickle Mechanic**   | Brush a tamed seal → drops **Seal Blubber**, plays a custom animation + sound, spawns heart particles (5 min cooldown)           |
 | **Seal Blubber**      | Edible food (3 hunger, can always eat). Grants Absorption I for 30 s when eaten in water. Also works as furnace fuel (320 ticks) |
 | **Rendered Blubber**  | Enchantment-glint utility item — use on Sand, Red Sand, or Gravel to create **Stabilized Blocks** that are immune to gravity     |
@@ -105,7 +105,7 @@ Once tamed, the seal will follow you and can sit on command.
   - **In water:** free-camera steering (look where you want to go)
   - **On land:** standard WASD ground controls
 
-While riding a seal in water, you receive **Conduit Power** continuously.
+While riding a seal in water, you receive a brief **Water Breathing** buff (similar to Respiration — it fades within 2 seconds of dismounting).
 
 ### Tickling
 
@@ -198,7 +198,7 @@ in-game testing, and art assets.
    full saddle equip/unequip lifecycle.
 3. **Script features** — `@minecraft/server` 1.14.0 scripting for four
    gameplay mechanics: tickle interaction, blubber food effects, gravity
-   freeze, and rider conduit-power buff.
+   freeze, and rider water-breathing buff.
 4. **Geometry rework** — The -90° Y rotation needed for seal orientation
    (facing sideways in Bedrock) was baked directly into cube
    positions/pivots rather than using a root-bone rotation, preventing
@@ -321,7 +321,7 @@ The following features are planned for future versions:
 ## Credits
 
 - **Ritual Boat** — Design, art, in-game testing, creative direction
-- **Valen Russel** — Inspiration and moral support ❤️
+- **Valen Russell** — Inspiration and moral support ❤️
 - **GitHub Copilot (Claude)** — AI-assisted code generation and debugging
 - **Blockbench** — Entity model and UV editing
 
